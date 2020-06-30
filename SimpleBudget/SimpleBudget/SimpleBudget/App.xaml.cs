@@ -1,7 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using SimpleBudget.Services;
 using SimpleBudget.Views;
 
 namespace SimpleBudget
@@ -12,8 +11,6 @@ namespace SimpleBudget
         public App()
         {
             InitializeComponent();
-
-            DependencyService.Register<MockDataStore>();
             MainPage = new MainPage();
         }
 

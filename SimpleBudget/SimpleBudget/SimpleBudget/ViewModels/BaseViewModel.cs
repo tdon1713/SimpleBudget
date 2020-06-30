@@ -6,14 +6,11 @@ using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 using SimpleBudget.Models;
-using SimpleBudget.Services;
 
 namespace SimpleBudget.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
-
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName] string propertyName = "",
             Action onChanged = null)

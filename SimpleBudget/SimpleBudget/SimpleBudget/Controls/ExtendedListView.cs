@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace SimpleBudget
+namespace SimpleBudget.Controls
 {
     public class ExtendedListView : ListView
     {

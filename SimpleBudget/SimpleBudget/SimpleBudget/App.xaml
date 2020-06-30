@@ -10,7 +10,7 @@
         <ResourceDictionary>
             <Color x:Key="PageBackgroundColor">#444444</Color>
             <Color x:Key="MenuBackgroundColor">#222222</Color>
-            <Color x:Key="MenuSelectedBackgroundColor">Teal</Color>
+            <Color x:Key="MenuSelectedBackgroundColor">#555555</Color>
             <Color x:Key="NavigationBarColor">Teal</Color>
             <Color x:Key="PrimaryColor">Teal</Color>
             <Color x:Key="SecondaryColor">White</Color>
@@ -19,14 +19,28 @@
             <Color x:Key="TertiaryTextColor">WhiteSmoke</Color>
             <Color x:Key="TransparentColor">Transparent</Color>
 
-            <x:String x:Key="FA_Brands">Assets/Fonts/Font Awesome 5 Free-Brands-Regular-400.otf#Font Awesome 5 Free</x:String>
-            <x:String x:Key="FA_Regular">Assets/Fonts/Font Awesome 5 Free-Regular-400.otf#Font Awesome 5 Free</x:String>
-            <x:String x:Key="FA_Solid">Assets/Fonts/Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free</x:String>
-
-            <Style x:Name="AppLabelTheme" TargetType="Label">
+            <Style x:Key="AppLabelTheme" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource SecondaryColor}" />
+            </Style>
+
+            <Style x:Key="FA_SolidLabel" TargetType="Label" BasedOn="{StaticResource AppLabelTheme}">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String" Android="font-awesome-solid.otf#Font Awesome 5 Free Solid" 
+                                WinPhone="Assets/Fonts/Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+            <Style x:Key="FA_RegularLabel" TargetType="Label" BasedOn="{StaticResource AppLabelTheme}">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String" Android="font-awesome-regular.otf#Font Awesome 5 Free Regular" 
+                            WinPhone="Assets/Fonts/Font Awesome 5 Free-Regular-400.otf#Font Awesome 5 Free" />
+                    </Setter.Value>
+                </Setter>
             </Style>
         </ResourceDictionary>
     </Application.Resources>
-    
+
 </Application>

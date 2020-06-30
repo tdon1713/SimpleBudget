@@ -11,12 +11,19 @@
     <StackLayout VerticalOptions="FillAndExpand">
         <ListView x:Name="ListViewMenu" SeparatorVisibility="None"
                     HasUnevenRows="True">
+            <ListView.Header>
+                <StackLayout Padding="0" Margin="0">
+                    <Image x:Name="imgHeader" Aspect="AspectFill" HeightRequest="165" />
+                </StackLayout>
+            </ListView.Header>
+            
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid Padding="10" BackgroundColor="{Binding BackgroundColor}">
-                            <Label Text="{Binding Title}" d:Text="{Binding .}" FontSize="20"
-                                   Scale="{DynamicResource AppLabelTheme}"/>
+                        <Grid Padding="12" BackgroundColor="{Binding BackgroundColor}" ColumnDefinitions="32, 1*">
+                            <Label Text="{Binding Icon}" Style="{StaticResource FA_SolidLabel}" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Column="1" Text="{Binding Title}" d:Text="{Binding .}" FontSize="20" VerticalTextAlignment="Center"
+                                   Style="{DynamicResource AppLabelTheme}"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

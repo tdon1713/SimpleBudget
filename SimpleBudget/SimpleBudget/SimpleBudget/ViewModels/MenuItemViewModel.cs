@@ -1,9 +1,4 @@
-﻿using SimpleBudget.Models;
-using SimpleBudget.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using SimpleBudget.Utility;
 using Xamarin.Forms;
 
 namespace SimpleBudget.ViewModels
@@ -12,9 +7,11 @@ namespace SimpleBudget.ViewModels
     {
         private bool _isSelected;
 
-        public MenuItemType Id { get; set; }
+        public MenuItems Id { get; set; }
 
         public string Title { get; set; }
+
+        public string Icon { get; set; }
 
         public bool IsSelected
         {

@@ -14,9 +14,8 @@
     <MasterDetailPage.Detail>
         <NavigationPage BarBackgroundColor="{DynamicResource NavigationBarColor}">
             <x:Arguments>
-                <views:ItemsPage />
+                <views:BudgetListPage />
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>
-    
 </MasterDetailPage>

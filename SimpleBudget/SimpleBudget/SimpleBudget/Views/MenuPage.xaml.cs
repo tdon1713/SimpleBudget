@@ -1,10 +1,8 @@
-﻿using SimpleBudget.Models;
+﻿using SimpleBudget.Utility;
 using SimpleBudget.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace SimpleBudget.Views
 {
@@ -13,16 +11,17 @@ namespace SimpleBudget.Views
     [DesignTimeVisible(false)]
     public partial class MenuPage : ContentPage
     {
-        MainPage RootPage { get => Application.Current.MainPage as MainPage; }
-        List<MenuItemViewModel> menuItems;
+        private MainPage RootPage => Application.Current.MainPage as MainPage; 
+        private List<MenuItemViewModel> menuItems;
+
         public MenuPage()
         {
             InitializeComponent();
+            
 
             menuItems = new List<MenuItemViewModel>
             {
-                new MenuItemViewModel {Id = MenuItemType.Browse, Title="Browse", IsSelected = true },
-                new MenuItemViewModel {Id = MenuItemType.About, Title="About" }
+                new MenuItemViewModel {Id = MenuItems.Budgets, Title="Budgets", IsSelected = true, Icon = "\uf555" },
             };
 
             ListViewMenu.ItemsSource = menuItems;
@@ -44,9 +43,22 @@ namespace SimpleBudget.Views
                 }
 
                 selectedItem.IsSelected = true;
-                var id = (int)selectedItem.Id;
-                await RootPage.NavigateFromMenu(id);
+                await RootPage.NavigateFromMenu(selectedItem.Id);
             };
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    imgHeader.Source = ImageSource.FromFile("Header_Landscape.png");
+                    break;
+                case Device.UWP:
+                    imgHeader.Source = ImageSource.FromFile("Header_Landscape.png");
+                    break;
+            }
         }
     }
 }
