@@ -29,9 +29,9 @@ namespace SimpleBudget.ViewModels
             get
             {
                 if (_isSelected)
-                    return Constants.Colors.Get(Constants.Colors.MenuSelectedBackgroundColor, Color.Teal);
+                    return Constants.Colors.Get(Constants.Colors.MediumColor, Color.Teal);
 
-                return Constants.Colors.Get(Constants.Colors.MenuBackgroundColor, Color.Black);
+                return Constants.Colors.Get(Constants.Colors.DarkColor, Color.Black);
             }
         }
     }

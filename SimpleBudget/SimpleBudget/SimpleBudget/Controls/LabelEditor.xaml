@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SimpleBudget.Controls.LabelEditor"
+             x:Name="this">
+  <ContentView.Content>
+        <StackLayout Style="{StaticResource MinimalStackLayoutStyle}" Spacing="3">
+            <Label x:Name="LabelField" Text="{Binding Title, Source={x:Reference this}}" Style="{StaticResource AppLabelTheme}" FontSize="Medium">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Editor x:Name="EditorField" Text="{Binding Text, Source={x:Reference this}}" 
+                   Placeholder="{Binding Placeholder, Source={x:Reference this}}"
+                   Style="{StaticResource AppEditorTheme}"
+                   Margin="5,0" HeightRequest="100" BackgroundColor="{StaticResource MediumColor}"/>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

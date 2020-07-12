@@ -34,13 +34,19 @@ namespace SimpleBudget.Views
                     case MenuItems.Budgets:
                         MenuPages.Add(id, new ExtendedNavigationPage(new BudgetListPage()));
                         break;
+                    case MenuItems.Archive:
+                        MenuPages.Add(id, new ExtendedNavigationPage(new ArchivedBudgetListPage()));
+                        break;
+                    case MenuItems.About:
+                        MenuPages.Add(id, new ExtendedNavigationPage(new AboutPage()));
+                        break;
                 }
             }
 
             var newPage = MenuPages[id];
-
             if (newPage != null && Detail != newPage)
             {
+                await newPage.PopToRootAsync();
                 Detail = newPage;
 
                 if (Device.RuntimePlatform == Device.Android)

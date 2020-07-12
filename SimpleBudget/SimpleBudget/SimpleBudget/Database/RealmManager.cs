@@ -11,7 +11,7 @@ namespace SimpleBudget.Database
             ShouldDeleteIfMigrationNeeded = true
         };
 
-        protected Realm GetDatabase()
+        protected static Realm GetDatabase()
         {
             return Realm.GetInstance(_config);
         }

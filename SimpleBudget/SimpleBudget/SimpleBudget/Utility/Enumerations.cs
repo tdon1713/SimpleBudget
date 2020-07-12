@@ -6,6 +6,8 @@ namespace SimpleBudget.Utility
 {
     public enum MenuItems
     {
-        Budgets
+        Budgets,
+        Archive,
+        About
     }
 }

@@ -3,6 +3,9 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Acr.UserDialogs;
+using Xamarin.Forms;
+using Android.Gms.Ads;
 
 namespace SimpleBudget.Droid
 {
@@ -16,8 +19,14 @@ namespace SimpleBudget.Droid
 
             base.OnCreate(savedInstanceState);
 
+            UserDialogs.Init(this);
+
+            Forms.SetFlags("SwipeView_Experimental");
+
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            MobileAds.Initialize(ApplicationContext, "ca-app-pub-6807199856579105~3836739510");
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

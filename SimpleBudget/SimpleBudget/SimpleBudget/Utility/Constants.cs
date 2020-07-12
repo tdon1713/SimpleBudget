@@ -6,9 +6,9 @@ namespace SimpleBudget.Utility
     {
         public static class Colors
         {
-            public const string PageBackgroundColor = nameof(PageBackgroundColor);
-            public const string MenuBackgroundColor = nameof(MenuBackgroundColor);
-            public const string MenuSelectedBackgroundColor = nameof(MenuSelectedBackgroundColor);
+            public const string MediumDarkColor = nameof(MediumDarkColor);
+            public const string DarkColor = nameof(DarkColor);
+            public const string MediumColor = nameof(MediumColor);
             public const string NavigationBarColor = nameof(NavigationBarColor);
 
             public static Color Get(string resourceName, Color defaultColor)

@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="SimpleBudget.Views.MenuPage"
              Title="Menu"
-             BackgroundColor="{StaticResource MenuBackgroundColor}">
+             BackgroundColor="{StaticResource DarkColor}">
              
     <StackLayout VerticalOptions="FillAndExpand">
         <ListView x:Name="ListViewMenu" SeparatorVisibility="None"

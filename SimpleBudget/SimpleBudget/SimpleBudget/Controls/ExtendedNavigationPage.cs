@@ -9,11 +9,5 @@ namespace SimpleBudget.Controls
         {
             BarBackgroundColor = Constants.Colors.Get(Constants.Colors.NavigationBarColor, Color.Teal);
         }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            CurrentPage.BackgroundColor = Constants.Colors.Get(Constants.Colors.PageBackgroundColor, Color.DarkGray);
-        }
     }
 }

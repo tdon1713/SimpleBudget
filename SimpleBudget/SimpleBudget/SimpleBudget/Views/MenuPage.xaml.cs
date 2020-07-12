@@ -6,8 +6,8 @@ using Xamarin.Forms;
 
 namespace SimpleBudget.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
+    //TODO: Add Settings Option
+    //TODO: Add ads
     [DesignTimeVisible(false)]
     public partial class MenuPage : ContentPage
     {
@@ -22,6 +22,8 @@ namespace SimpleBudget.Views
             menuItems = new List<MenuItemViewModel>
             {
                 new MenuItemViewModel {Id = MenuItems.Budgets, Title="Budgets", IsSelected = true, Icon = "\uf555" },
+                new MenuItemViewModel {Id = MenuItems.Archive, Title="Archive", Icon = "\uf187" },
+                new MenuItemViewModel {Id = MenuItems.About, Title="About", Icon = "\uf05a" }
             };
 
             ListViewMenu.ItemsSource = menuItems;

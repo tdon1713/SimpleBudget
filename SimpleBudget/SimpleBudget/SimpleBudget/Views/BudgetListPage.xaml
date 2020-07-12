@@ -4,19 +4,79 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:SimpleBudget.ViewModels"
+             xmlns:controls="clr-namespace:SimpleBudget.Controls"
+             xmlns:ads="clr-namespace:SimpleBudget.Admob"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              mc:Ignorable="d"
              x:Class="SimpleBudget.Views.BudgetListPage"
-             BackgroundColor="{StaticResource PageBackgroundColor}"
+             BackgroundColor="{StaticResource MediumDarkColor}"
              Title="{Binding Title}">
     <ContentPage.BindingContext>
         <vm:BudgetListViewModel />
     </ContentPage.BindingContext>
-    
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Order="Primary" IconImageSource="plus.png" Command="{Binding AddBudgetCommand}"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <CollectionView Grid.Row="0" Style="{StaticResource AppCollectionViewStyle}" 
+                            ItemsSource="{Binding Budgets}" SelectedItem="{Binding SelectedBudget}"
+                            SelectionMode="Single" SelectionChangedCommand="{Binding BudgetSelectedCommand}" SelectionChangedCommandParameter="{Binding SelectedBudget}">
+                <CollectionView.EmptyView>
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <StackLayout Padding="10,0" VerticalOptions="CenterAndExpand">
+                            <Label Text="No budgets available" Style="{StaticResource AppLabelTheme}" FontSize="Title"
+                                   Margin="10,-80,10,20" HorizontalTextAlignment="Center"/>
+                            <controls:ExtendedButton Text="Add Your First Budget" Command="{Binding AddBudgetCommand}" Style="{StaticResource AppButtonTheme}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <AbsoluteLayout>
+                            <ContentView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                                <pancake:PancakeView Shadow="{pancake:Shadow Color=White, BlurRadius=2}" CornerRadius="6" Margin="10" Padding="0">
+                                    <StackLayout Style="{StaticResource MinimalStackLayoutStyle}">
+                                        <Label Text="{Binding Name}" Style="{StaticResource AppLabelTheme}" FontSize="Title" BackgroundColor="{StaticResource DarkColor}" Padding="10"/>
+
+                                        <SwipeView BackgroundColor="{StaticResource MediumLightColor}">
+                                            <SwipeView.RightItems>
+                                                <SwipeItems>
+                                                    <SwipeItem Text="Delete"
+                                                               IconImageSource="trash_o.png"
+                                                               BackgroundColor="{StaticResource DangerColor}" 
+                                                               Invoked="DeleteItem_Invoked"/>
+                                                    <SwipeItem Text="Archive"
+                                                               IconImageSource="archive.png"
+                                                               BackgroundColor="{StaticResource WarningColor}"
+                                                               Invoked="ArchiveItem_Invoked"/>
+                                                </SwipeItems>
+                                            </SwipeView.RightItems>
+                                            <StackLayout Style="{StaticResource MinimalStackLayoutStyle}" Padding="10" Spacing="5">
+                                                <Label Text="{Binding Description}" Style="{StaticResource AppLabelTheme}" />
+                                                <ProgressBar Progress="{Binding Progress}" ProgressColor="{Binding ProgressColor}" ScaleY="2"/>
+                                                <Label Text="{Binding ProgressString}" Style="{StaticResource AppLabelTheme}" HorizontalOptions="EndAndExpand" />
+                                            </StackLayout>
+                                        </SwipeView>
+                                    </StackLayout>
+                                </pancake:PancakeView>
+                            </ContentView>
+                            <Label Text="&#xf560;" Style="{StaticResource FA_SolidLabel}" IsVisible="{Binding IsCompleted}" TextColor="Yellow" FontSize="Title" 
+                                               AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1.01,0.05,28,28"/>
+                        </AbsoluteLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <ads:AdControlView Grid.Row="1" BackgroundColor="Red" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
