@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.446" />
+    <PackageReference Include="Realm" Version="4.3.0" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.968" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />  
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.4.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Controls\LabelEditor.xaml.cs">
+      <DependentUpon>LabelEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\LabelEntry.xaml.cs">
+      <DependentUpon>LabelEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SetupBudgetPage.xaml.cs">
+      <DependentUpon>SetupBudgetPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Controls\LabelEditor.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AboutPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ArchivedBudgetListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SetupBudgetPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\BudgetListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

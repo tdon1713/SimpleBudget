@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0.0" package="com.tdonaldson.simplebudget" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<application android:label="Simple Budget" android:icon="@drawable/Icon">
+		<activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:theme="@android:style/Theme.Translucent" />
+		<meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-6807199856579105~3836739510" />
+	</application>
+</manifest>

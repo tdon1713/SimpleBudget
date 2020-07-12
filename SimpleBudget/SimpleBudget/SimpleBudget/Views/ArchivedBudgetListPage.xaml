@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:SimpleBudget.Controls"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:vm="clr-namespace:SimpleBudget.ViewModels"
+             mc:Ignorable="d"
+             x:Class="SimpleBudget.Views.ArchivedBudgetListPage"
+             BackgroundColor="{StaticResource MediumDarkColor}"
+             Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:ArchivedBudgetListViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <CollectionView Style="{StaticResource AppCollectionViewStyle}" ItemsSource="{Binding Budgets}" SelectedItem="{Binding SelectedBudget}"
+                        SelectionMode="Single" SelectionChangedCommand="{Binding BudgetSelectedCommand}" SelectionChangedCommandParameter="{Binding SelectedBudget}">
+            <CollectionView.EmptyView>
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <StackLayout Padding="10,0" VerticalOptions="CenterAndExpand">
+                        <Label Text="No budgets have been archived" Style="{StaticResource AppLabelTheme}" FontSize="Title"
+                                   Margin="10,0" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </StackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <AbsoluteLayout>
+                        <ContentView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                            <pancake:PancakeView BackgroundColor="{StaticResource MediumLightColor}" Shadow="{pancake:Shadow Color=White, BlurRadius=2}" CornerRadius="6" Margin="10" Padding="0">
+                            <StackLayout Style="{StaticResource MinimalStackLayoutStyle}">
+                                <Label Text="{Binding Name}" Style="{StaticResource AppLabelTheme}" FontSize="Title" BackgroundColor="{StaticResource DarkColor}" Padding="10" />
+                                <StackLayout Style="{StaticResource MinimalStackLayoutStyle}" Padding="10" Spacing="5">
+                                    <Label Text="{Binding Description}" Style="{StaticResource AppLabelTheme}" />
+                                    <ProgressBar Progress="{Binding Progress}" ProgressColor="{Binding ProgressColor}" ScaleY="2"/>
+                                    <Label Text="{Binding ProgressString}" Style="{StaticResource AppLabelTheme}" HorizontalOptions="EndAndExpand" />
+                                </StackLayout>
+                            </StackLayout>
+                        </pancake:PancakeView>
+                    </ContentView>
+                        <Label Text="&#xf560;" Style="{StaticResource FA_SolidLabel}" IsVisible="{Binding IsCompleted}" TextColor="Yellow" FontSize="Title" 
+                                               AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1.01,0.05,28,28"/>
+                    </AbsoluteLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>
